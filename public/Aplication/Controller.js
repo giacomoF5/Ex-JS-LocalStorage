@@ -9,6 +9,7 @@ var Controller = /** @class */ (function () {
     }
     Controller.prototype.index = function () {
         this.addListenerBtnSubmit();
+        this.localStorage.getData();
     };
     Controller.prototype.store = function (data) {
         this.localStorage.storeData(data);

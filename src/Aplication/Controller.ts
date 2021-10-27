@@ -15,6 +15,7 @@ export default class Controller {
     public index() : void
     {
         this.addListenerBtnSubmit();
+        this.localStorage.getData();
     }
 
     public store(data:string) : void
