@@ -1,10 +1,10 @@
-var DataConnection = /** @class */ (function () {
-    function DataConnection() {
+var LocaStorage = /** @class */ (function () {
+    function LocaStorage() {
     }
-    DataConnection.prototype.getData = function () {
+    LocaStorage.prototype.getData = function () {
     };
-    DataConnection.prototype.storeData = function () {
+    LocaStorage.prototype.storeData = function () {
     };
-    return DataConnection;
+    return LocaStorage;
 }());
-export default DataConnection;
+export default LocaStorage;

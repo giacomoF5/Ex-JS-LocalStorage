@@ -1,16 +1,15 @@
 import { btnSubmit, subscriberInput } from "../Domain/Elements.js";
+import LocalStorage from "../Infrastructure/LocalStorage.js";
 
 export default class Controller {
 
-    private subscriberInput: HTMLInputElement;
-    private btnSubmit: HTMLButtonElement;
+    private localStorage:LocalStorage = new LocalStorage();
 
     constructor() {
-        this.subscriberInput  = subscriberInput;
-        this.btnSubmit = btnSubmit;
+        subscriberInput;
+        btnSubmit;
 
         this.index();
-        this.store();
     }
 
     public index() : void
@@ -18,24 +17,23 @@ export default class Controller {
         this.addListenerBtnSubmit();
     }
 
-    public store() : void
+    public store(data:string) : void
     {
-        
+        this.localStorage.storeData(data);
     }
 
-    private addListenerBtnSubmit()
+    private addListenerBtnSubmit() : void
     {
         btnSubmit.addEventListener('click', (e) => {
-            this.retrieveInputValue(subscriberInput.value);
-        })
-    }
-
-    private retrieveInputValue(value:string) : string
-        {
-            if(!value) {
+            if(!subscriberInput.value) {
                 subscriberInput.placeholder = 'Please insert an email';
             }
 
-            return value;
-        }
+            if(subscriberInput.value) {
+                this.store(subscriberInput.value);
+            }
+
+            this.localStorage.getData();
+        })
+    }
 }
